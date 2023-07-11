@@ -1,0 +1,444 @@
+"S_STAGE","S_PROCESSED","S_INSIS","T_STAGE","T_PROCESSED","T_INSIS","ORDEN","PRIORIDAD","PATH","QUERY","PK","HEATER","USR_STAGE","PWD_STAGE","AUT_STAGE","USR_PROCESSED","PWD_PROCESSED","AUT_PROCESSED","USR_INSIS","PWD_INSIS","AUT_INSIS","AUTORREFERENCIAL","MIGRADA","BATCH_SIZE","T_TRACE","ESTADO","QUERY_UPD","URL_INS","URL_UPD","T_REJECT","TYPE_API","TEMPLATE","ID_TABLE","QUERY_STG"
+"INSIS_PEOPLE_V10","INSIS_PEOPLE_V10_FK",,"P_BANK_ACCOUNT","P_BANK_ACCOUNT","P_BANK_ACCOUNT","21","5","manId,bankId","SELECT pl.mand_id_insis, BANK_ID, ACCOUNT_NUM, ACCOUNT_CURRENCY, ACCOUNT_STATE, VALID_FROM, VALID_TO, PRIMARY_FLAG, XL.BANK_ACC_ID_insis
+FROM INSIS_PEOPLE_V10.P_BANK_ACCOUNT X 
+INNER JOIN INSIS_PEOPLE_V10_TRACE.P_PEOPLE_LOG PL ON X.man_id = pl.man_id_vigente
+LEFT JOIN INSIS_PEOPLE_V10_TRACE.P_BANK_ACCOUNT_LOG XL ON X.BANK_ACC_ID = XL.BANK_ACC_ID_vigente","BANK_ACC_ID",,,,,,,,,,,,"0","100",,"0",,"/pp-bankaccount-type",,,"0",,"21","SELECT man_id, BANK_ID, ACCOUNT_NUM, ACCOUNT_CURRENCY, ACCOUNT_STATE, VALID_FROM, VALID_TO, PRIMARY_FLAG, BANK_ACC_ID,INSERT_DATE, UPDATE_DATE, BATCH_ID
+FROM INSIS_PEOPLE_V10.P_BANK_ACCOUNT "
+"INSIS_PEOPLE_V10","INSIS_PEOPLE_V10_FK",,"P_CREDITOR_CHANGES","P_CREDITOR_CHANGES","P_CREDITOR_CHANGES","24","5","creditorId,changeId,manId,","SELECT CHANGE_ID, CREDITOR_ID, pl.mand_id_insis, NOTES, VALID_FROM, VALID_TO, USERNAME, REGISTRATION_DATE
+FROM PEOPLE.P_CREDITOR_CHANGES X INNER JOIN INSIS_PEOPLE_V10_TRACE.P_PEOPLE_LOG PL ON X.man_id = pl.man_id_vigente","change_id",,,,,,,,,,,,"0","100",,"0",,"/pp-creditor-changes-type",,,"0",,"24","SELECT
+    change_id,
+    creditor_id,
+    man_id,
+    notes,
+    valid_from,
+    valid_to,
+    username,
+    registration_date
+FROM
+    INSIS_PEOPLE_V10.p_creditor_changes"
+"INSIS_PEOPLE_V10","INSIS_PEOPLE_V10_FK",,"P_EXPERT_CHANGES","P_EXPERT_CHANGES","P_EXPERT_CHANGES","25","5","changeId,expertId,manId,","SELECT CHANGE_ID, EXPERT_ID, pl.mand_id_insis, QUALIFICATION, OEXP1, OEXP2, OEXP3, OEXP4, OEXP5, CONTRACT_NO, BEGIN_DATE, END_DATE, NOTES, VALID_FROM, VALID_TO, USERNAME, REGISTRATION_DATE
+FROM PEOPLE.P_EXPERT_CHANGES X INNER JOIN INSIS_PEOPLE_V10_TRACE.P_PEOPLE_LOG PL ON X.man_id = pl.man_id_vigente","change_id",,,,,,,,,,,,"0","100",,"0",,"/pp-expert-changes-type",,,"0",,"25","SELECT
+    change_id,
+    expert_id,
+    man_id,
+    qualification,
+    oexp1,
+    oexp2,
+    oexp3,
+    oexp4,
+    oexp5,
+    contract_no,
+    begin_date,
+    end_date,
+    notes,
+    valid_from,
+    valid_to,
+    username,
+    registration_date,
+    update_date,
+    insert_date,
+    batch_id
+FROM
+    INSIS_PEOPLE_V10.p_expert_changes"
+"INSIS_PEOPLE_V10","INSIS_PEOPLE_V10_FK",,"P_INSURER_CHANGES","P_INSURER_CHANGES","P_INSURER_CHANGES","26","5","changeId,insurerId,manId","SELECT CHANGE_ID, INSURER_ID, pl.mand_id_insis, INSURER_TYPE, CURRENT_INSURER, REG_NUM, VALID_FROM, VALID_TO, USERNAME, REGISTRATION_DATE
+FROM PEOPLE.P_INSURER_CHANGES X INNER JOIN INSIS_PEOPLE_V10_TRACE.P_PEOPLE_LOG PL ON X.man_id = pl.man_id_vigente","change_id",,,,,,,,,,,,"0","100",,"0",,"/pp-insurer-changes-type",,,"0",,"26","SELECT
+    change_id,
+    insurer_id,
+    man_id,
+    insurer_type,
+    current_insurer,
+    reg_num,
+    valid_from,
+    valid_to,
+    username,
+    registration_date,
+    update_date,
+    insert_date,
+    batch_id
+FROM
+    INSIS_PEOPLE_V10.p_insurer_changes"
+"INSIS_PEOPLE_V10","INSIS_PEOPLE_V10_FK",,"P_CREDIT_CARD","P_CREDIT_CARD","P_CREDIT_CARD","11","4",,"SELECT XL.CARD_ID_INSIS, pl.mand_id_insis, CC_TYPE_ID, BILLING_ADDRESS, CARDHOLDER_NAME, EXPIRY_MONTH, EXPIRY_YEAR, VALID_FROM, VALID_TO, ATTR1, ATTR2, ATTR3, ATTR4, ATTR5, PREFERRED_FLAG
+FROM INSIS_PEOPLE_V10.P_CREDIT_CARD C 
+INNER JOIN INSIS_PEOPLE_V10_TRACE.P_PEOPLE_LOG PL ON C.man_id = pl.man_id_vigente
+LEFT JOIN INSIS_PEOPLE_V10_TRACE.P_CREDIT_CARD_LOG XL ON C.CARD_ID = XL.CARD_ID_vigente","card_Id",,,,,,,,,,,,"0","100",,"0",,"/pp-credit-card-type",,,"0",,"11","SELECT CARD_ID, man_id, CC_TYPE_ID, BILLING_ADDRESS, CARDHOLDER_NAME, EXPIRY_MONTH, EXPIRY_YEAR, VALID_FROM, VALID_TO, ATTR1, ATTR2, ATTR3, ATTR4, ATTR5, PREFERRED_FLAG, INSERT_DATE, UPDATE_DATE, BATCH_ID
+FROM INSIS_PEOPLE_V10.P_CREDIT_CARD "
+"INSIS_PEOPLE_V10","INSIS_PEOPLE_V10_FK",,"P_EXPERTS","P_EXPERTS","P_EXPERTS","12","4",,"SELECT XL.EXPERT_ID_insis, pl.mand_id_insis, QUALIFICATION, OEXP1, OEXP2, OEXP3, OEXP4, OEXP5, CONTRACT_NO, BEGIN_DATE, END_DATE, NOTES
+FROM INSIS_PEOPLE_V10.P_EXPERTS X 
+INNER JOIN INSIS_PEOPLE_V10_TRACE.P_PEOPLE_LOG PL ON X.man_id = pl.man_id_vigente
+LEFT JOIN INSIS_PEOPLE_V10_TRACE.P_EXPERTS_LOG XL ON X.EXPERT_ID = XL.EXPERT_ID_vigente","expert_Id",,,,,,,,,,,,"0","100",,"0",,"/pp-expert-type",,,"0",,"12","SELECT EXPERT_ID, man_id, QUALIFICATION, OEXP1, OEXP2, OEXP3, OEXP4, OEXP5, CONTRACT_NO, BEGIN_DATE, END_DATE, NOTES,INSERT_DATE, UPDATE_DATE, BATCH_ID
+FROM INSIS_PEOPLE_V10.P_EXPERTS"
+"INSIS_PEOPLE_V10","INSIS_PEOPLE_V10_FK",,"P_OTHERS","P_OTHERS","P_OTHERS","30","5",,"SELECT ADDRESS_ID, pl.mand_id_insis, ADDRESS_TYPE, CHANGE_DATE, NOTES, OOP1, OOP2, OOP3, OOP4, OTHER_SUBTYPE
+FROM INSIS_PEOPLE_V10.P_OTHERS X INNER JOIN INSIS_PEOPLE_V10_TRACE.P_PEOPLE_LOG PL ON X.man_id = pl.man_id_vigente","address_id",,,,,,,,,,,,"0","100",,"0",,"/pp-other-type",,,"0",,"30","SELECT ADDRESS_ID, man_id, ADDRESS_TYPE, CHANGE_DATE, NOTES, OOP1, OOP2, OOP3, OOP4, OTHER_SUBTYPE,INSERT_DATE, UPDATE_DATE, BATCH_ID
+FROM INSIS_PEOPLE_V10.P_OTHERS"
+"INSIS_PEOPLE_V10","INSIS_PEOPLE_V10_FK","3","P_Banks","P_Banks","P_Banks","5","4",,"SELECT bank_id, pl.id_insis AS man_id,BANK_CODE,SWIFT_CODE,MAIN_BANK_ID, B.S_UPDATE
+FROM INSIS_PEOPLE_V10.P_BANKS B
+INNER JOIN INSIS_PEOPLE_V10_TRACE.P_PEOPLE_LOG PL ON B.man_id = pl.id_vigente
+LEFT JOIN INSIS_PEOPLE_V10_TRACE.P_BANKS_LOG PB ON b.bank_id = PB.id_vigente
+where PB.ID_VIGENTE is null
+and bank_id not in (SELECT ID FROM INSIS_PEOPLE_V10_TRACE.P_BANKS_REJECT)
+start  with MAIN_BANK_ID is NULL
+connect by PRIOR BANK_ID = MAIN_BANK_ID","bank_id",,,,,,,,,,,,"0","100","P_BANKS_LOG","0","SELECT  PB.id_insis as bank_id, pl.id_insis AS man_id,BANK_CODE,SWIFT_CODE,MAIN_BANK_ID, B.S_UPDATE
+FROM INSIS_PEOPLE_V10.P_BANKS B 
+INNER JOIN INSIS_PEOPLE_V10_TRACE.P_PEOPLE_LOG PL ON B.man_id = pl.id_vigente
+INNER JOIN INSIS_PEOPLE_V10_TRACE.P_BANKS_LOG PB ON b.bank_id = PB.id_vigente
+WHERE  to_date(B.S_UPDATE,'DD/MM/YYYY') > to_date(PB.S_UPDATE,'DD/MM/YYYY') 
+",,,"P_BANKS_REJECT","1","INSERT_BANK_BO","5","SELECT bank_id, man_id,BANK_CODE,SWIFT_CODE,MAIN_BANK_ID, INSERT_DATE, UPDATE_DATE, BATCH_ID
+FROM INSIS_PEOPLE_V10.P_BANKS B
+start  with MAIN_BANK_ID is NULL
+connect by PRIOR BANK_ID = MAIN_BANK_ID"
+"INSIS_PEOPLE_V10","INSIS_PEOPLE_V10_FK",,"P_CASE_NAMES","P_CASE_NAMES","P_CASE_NAMES","6","4","manId","SELECT pl.mand_id_insis,NAME_CAPS, NAME_GENITIVE, NAME_VOCATIVE, NAME_DATE, NAME_LOC, SNAME_LOC, NAME_ENG, SNAME_ENG, NAME_FR, SNAME_FR, PREFIX_LOC, SUFFIX_LOC, PREFIX_ENG, SUFFIX_ENG, PREFIX_FR, SUFFIX_FR
+FROM INSIS_PEOPLE_V10_FK.P_CASE_NAMES C INNER JOIN INSIS_PEOPLE_V10_TRACE.P_PEOPLE_LOG PL ON C.man_id = pl.man_id_vigente","man_id",,,,,,,,,,,,"0","100",,"0",,"/pp-case-name-type",,,"0",,"6","SELECT man_id,NAME_CAPS, NAME_GENITIVE, NAME_VOCATIVE, NAME_DATE, NAME_LOC, SNAME_LOC, NAME_ENG, SNAME_ENG, NAME_FR, SNAME_FR, PREFIX_LOC, SUFFIX_LOC, PREFIX_ENG, SUFFIX_ENG, PREFIX_FR, SUFFIX_FR, INSERT_DATE, UPDATE_DATE, BATCH_ID
+FROM INSIS_PEOPLE_V10.P_CASE_NAMES "
+"INSIS_PEOPLE_V10","INSIS_PEOPLE_V10_FK",,"P_CLIENTS","P_CLIENTS","P_CLIENTS","7","4",,"SELECT PC.CLIENT_ID_INSIS, pl.mand_id_insis, OFFICIAL_STATUS, IC_STATUS, CORPORATE_IC_STATUS, EMPLOYEE_STATUS, RISK_RATING, SEGMENT, CUSTOMER_TYPE, PROFITABILITY, ACCEPT_MARKET_INFO, ACCOUNT_ID, UPDATE_DATE, INSERT_DATE, BATCH_ID
+FROM INSIS_PEOPLE_V10.P_CLIENTS C 
+INNER JOIN INSIS_PEOPLE_V10_TRACE.P_PEOPLE_LOG PL ON C.man_id = pl.man_id_vigente
+LEFT JOIN INSIS_PEOPLE_V10_TRACE.P_CLIENTS_LOG PC ON C.CLIENT_ID = PC.CLIENT_ID_vigent","client_id",,,,,,,,,,,,"0","100",,"0",,"/pp-client-type",,,"0",,"7","
+SELECT CLIENT_ID, man_id, OFFICIAL_STATUS, IC_STATUS, CORPORATE_IC_STATUS, EMPLOYEE_STATUS, RISK_RATING, SEGMENT, CUSTOMER_TYPE, PROFITABILITY, ACCEPT_MARKET_INFO, ACCOUNT_ID, UPDATE_DATE, INSERT_DATE, BATCH_ID
+FROM INSIS_PEOPLE_V10.P_CLIENTS "
+"INSIS_PEOPLE_V10","INSIS_PEOPLE_V10_FK",,"P_CONTACTS","P_CONTACTS","P_CONTACTS","8","4",,"SELECT CL.CONTACT_ID_insis, CONTACT_TYPE, pl.mand_id_insis, DETAILS, NOTE, PRIMARY_FLAG, VALID_FROM, VALID_TO, LANGUAGE
+FROM INSIS_PEOPLE_V10.P_CONTACTS C 
+INNER JOIN INSIS_PEOPLE_V10_TRACE.P_PEOPLE_LOG PL ON C.man_id = pl.man_id_vigente
+LEFT  JOIN INSIS_PEOPLE_V10_TRACE.P_CONTACTS_LOG CL ON C.CONTACT_ID = CL.CONTACT_ID_vigente","contact_id",,,,,,,,,,,,"0","100",,"0",,"/pp-contact-type",,,"0",,"8","SELECT CONTACT_ID, CONTACT_TYPE, man_id, DETAILS, NOTE, PRIMARY_FLAG, VALID_FROM, VALID_TO, LANGUAGE, INSERT_DATE, UPDATE_DATE, BATCH_ID
+FROM INSIS_PEOPLE_V10.P_CONTACTS 
+"
+"INSIS_PEOPLE_V10","INSIS_PEOPLE_V10_FK",,"P_CREDITORS","P_CREDITORS","P_CREDITORS","10","4",,"SELECT XL.CREDITOR_ID_insis, pl.mand_id_insis, NOTES
+FROM INSIS_PEOPLE_V10.P_CREDITORS C INNER JOIN INSIS_PEOPLE_V10_TRACE.P_PEOPLE_LOG PL ON C.man_id = pl.man_id_vigente
+LEFT JOIN INSIS_PEOPLE_V10_TRACE.P_CREDITORS_LOG XL ON C.CREDITOR_ID = XL.CREDITOR_ID_vigente","creditor_Id",,,,,,,,,,,,"0","100",,"0",,"/pp-creditor-type",,,"0",,"10","
+SELECT CREDITOR_ID, man_id, NOTES, INSERT_DATE, UPDATE_DATE, BATCH_ID
+FROM INSIS_PEOPLE_V10.P_CREDITORS "
+"INSIS_PEOPLE_V10","INSIS_PEOPLE_V10_FK",,"P_PEOPLE_RELATION","P_PEOPLE_RELATION","P_PEOPLE_RELATION","15","4",,"SELECT PART1_ID, PART2_ID, REL_ID, VALID_FROM , VALID_TO,INSERT_DATE, UPDATE_DATE, BATCH_ID
+FROM INSIS_PEOPLE_V10.P_PEOPLE_RELATION ","rel_Id",,,,,,,,,,,,"0","100",,"0",,"/pp-relation-type",,,"0",,"15","SELECT PART1_ID, PART2_ID, REL_ID, VALID_FROM , VALID_TO,INSERT_DATE, UPDATE_DATE, BATCH_ID
+FROM INSIS_PEOPLE_V10.P_PEOPLE_RELATION "
+"INSIS_PEOPLE_V10","INSIS_PEOPLE_V10_FK",,"P_People_Id_List","P_People_Id_List","P_People_Id_List","16","4",,"SELECT LIST_ID, pl.id_insis as man_id, ID_TYPE, ID_NUMBER, VALID_FROM, VALID_TO, x.S_UPDATE FROM INSIS_PEOPLE_V10_FK.P_PEOPLE_ID_LIST X INNER JOIN INSIS_PEOPLE_V10_TRACE.P_PEOPLE_LOG PL ON X.man_id = PL.ID_VIGENTE","list_id",,,,,,,,,,,,"0","100","P_PEOPLE_ID_LIST_LOG","0",,"/pp-people-id-list-type",,"P_PEOPLE_ID_LIST_REJECT","1","INS_PEOPLE_ID_LIST","16","SELECT LIST_ID,  man_id, ID_TYPE, ID_NUMBER, VALID_FROM, VALID_TO, INSERT_DATE, UPDATE_DATE, BATCH_ID 
+FROM INSIS_PEOPLE_V10.P_PEOPLE_ID_LIST "
+"INSIS_PEOPLE_V10","INSIS_PEOPLE_V10_FK",,"P_SALES_CHANNEL","P_SALES_CHANNEL","P_SALES_CHANNEL","19","4",,"SELECT XL.CHANNEL_ID_insis, pl.mand_id_insis, CHANNEL_TYPE, CHANNEL_SUBTYPE, MAIN_CHANNEL
+FROM INSIS_PEOPLE_V10.P_SALES_CHANNEL X 
+INNER JOIN INSIS_PEOPLE_V10_TRACE.P_PEOPLE_LOG PL ON X.man_id = pl.man_id_vigente
+LEFT JOIN INSIS_PEOPLE_V10_TRACE.P_SALES_CHANNEL_LOG XL ON X.CHANNEL_ID = XL.CHANNEL_ID_vigente","channel_Id",,,,,,,,,,,,"0","100",,"0",,"/pp-sales-channel-type",,,"0",,"19","SELECT CHANNEL_ID, man_id, CHANNEL_TYPE, CHANNEL_SUBTYPE, MAIN_CHANNEL,INSERT_DATE, UPDATE_DATE, BATCH_ID
+FROM INSIS_PEOPLE_V10.P_SALES_CHANNEL"
+"INSIS_PEOPLE_V10","INSIS_PEOPLE_V10_FK","33","P_AGENTS","P_AGENTS","P_AGENTS","31","6",,"SELECT AH.AGENT_ID_insis, pl.mand_id_insis, AP.AGENT_TYPE, AP.OFFICE_ID, AP.QUALIF_LEVEL, AP.HIRE_DATE, AP.FIRE_DATE, AP.AGENT_STATE, 
+        AP.DEFAULT_AGENT, AH1.AGENT_ID_insis, AP.AGENT_NO, AP.CONTRACT_TYPE, AP.CONTRACT_MONTHS, AP.ACCOUNT_NUMBER, 
+        AP.PREV_JOB_CONFIRM_DATE, AP.NOTES, AP.OLD_AGENT_NO, AP.LEAVING_REASON, AP.ACCOUNT_ID
+FROM  INSIS_PEOPLE_V10.P_AGENTS AP
+INNER JOIN INSIS_PEOPLE_V10_TRACE.P_PEOPLE_LOG PL ON AP.man_id = pl.man_id_vigente
+LEFT JOIN INSIS_PEOPLE_V10_TRACE.P_AGENTS_LOG AH ON AP.AGENT_ID = AH.AGENT_ID_vigente 
+LEFT JOIN INSIS_PEOPLE_V10_TRACE.P_AGENTS_LOG AH1 ON AP.MAIN_AGENT = AH1.AGENT_ID_vigente","agent_id",,,,,,,,,,,,"0","100",,"0",,"/pp-agent-type",,,"0",,"31","SELECT AGENT_ID, man_id, AGENT_TYPE, OFFICE_ID, QUALIF_LEVEL, HIRE_DATE, FIRE_DATE, AGENT_STATE, 
+        DEFAULT_AGENT, AGENT_NO, CONTRACT_TYPE, CONTRACT_MONTHS, ACCOUNT_NUMBER, 
+        PREV_JOB_CONFIRM_DATE, NOTES, OLD_AGENT_NO, LEAVING_REASON, ACCOUNT_ID,INSERT_DATE, UPDATE_DATE, BATCH_ID
+FROM  INSIS_PEOPLE_V10.P_AGENTS"
+"INSIS_PEOPLE_V10","INSIS_PEOPLE_V10_FK",,"P_STAFF","P_STAFF","P_STAFF","33","6",,"SELECT SL.STAFF_ID_insis, pl.mand_id_insis, OCUPATION, SECURITY_ID, MAX_QUAL_LEVEL, OFFICE_ID, PERIOD_ID, 
+        FL_MANY_PERIODS, SENIOR, USER_EMAIL, LANGUAGE, ACCOUNT_ID
+FROM  INSIS_PEOPLE_V10.P_STAFF S
+INNER JOIN INSIS_PEOPLE_V10_TRACE.P_PEOPLE_LOG PL ON S.man_id = PL.man_id_vigente
+LEFT JOIN INSIS_PEOPLE_V10_TRACE.P_STAFF_LOG SL ON S.STAFF_ID = SL.STAFF_ID_vigente ","staff_Id",,,,,,,,,,,,"0","100",,"0",,"/pp-staff-type",,,"0",,"33","SELECT STAFF_ID, man_id, OCUPATION, SECURITY_ID, MAX_QUAL_LEVEL, OFFICE_ID, PERIOD_ID, 
+        FL_MANY_PERIODS, SENIOR, USER_EMAIL, LANGUAGE, ACCOUNT_ID,INSERT_DATE, UPDATE_DATE, BATCH_ID
+FROM  INSIS_PEOPLE_V10.P_STAFF"
+"INSIS_PEOPLE_V10","INSIS_PEOPLE_V10_FK",,"p_address","P_Address","P_Address","4","4",,"SELECT pl.id_insis man_id, A.ADDRESS_TYPE, A.COUNTRY, A.CITY, A.ADDRESS, A.POST_CODE, A.NOTE, A.COUNTRY_CODE, 
+a.address_id, A.COUNTRY_STATE, A.MAIL_YN, A.INVOICE_YN, A.STATE_REGION, A.TERRITORY_CLASSIFICATION, A.CITY_CODE, 
+A.STREET_ID, A.STREET_NUMBER, A.BLOCK_NUMBER,A.ENTRANCE_NUMBER, A.FLOOR_NUMBER, A.APARTMENT_NUMBER, A.QUARTER_ID, A.STATE_NAME, 
+A.REGION_NAME, A.QUARTER_NAME, A.STREET_NAME,A.VALID_FROM , A.VALID_TO, A.USAGE_DATE_FROM, A.USAGE_DATE_TO, A.PRIMARY_FLAG, A.S_UPDATE 
+FROM INSIS_PEOPLE_V10.P_ADDRESS_T A 
+INNER JOIN INSIS_PEOPLE_V10_TRACE.P_PEOPLE_LOG PL ON A.man_id = pl.id_vigente
+LEFT JOIN INSIS_PEOPLE_V10_TRACE.P_ADDRESS_LOG AL ON A.address_id = AL.ID_VIGENTE
+where AL.ID_VIGENTE is null 
+and a.address_id not in (SELECT ID FROM INSIS_PEOPLE_V10_TRACE.P_ADDRESS_REJECT)
+and rownum < 1000","address_id",,,,,,,,,,,,"0","100","P_ADDRESS_LOG","0","SELECT  PL.id_insis AS man_id, A.ADDRESS_TYPE, A.COUNTRY, A.CITY, A.ADDRESS, A.POST_CODE, A.NOTE, A.COUNTRY_CODE, AL.id_insis as address_id, A.COUNTRY_STATE, A.MAIL_YN, A.INVOICE_YN, A.STATE_REGION, A.TERRITORY_CLASSIFICATION, A.CITY_CODE, A.STREET_ID, A.STREET_NUMBER, A.BLOCK_NUMBER, A.ENTRANCE_NUMBER, A.FLOOR_NUMBER, A.APARTMENT_NUMBER, A.QUARTER_ID, A.STATE_NAME, A.REGION_NAME, A.QUARTER_NAME, A.STREET_NAME, A.VALID_FROM, A.VALID_TO, A.USAGE_DATE_FROM, A.USAGE_DATE_TO, A.PRIMARY_FLAG
+FROM INSIS_PEOPLE_V10.P_ADDRESS_T A
+INNER JOIN INSIS_PEOPLE_V10_TRACE.P_PEOPLE_LOG PL ON A.man_id = pl.id_vigente
+INNER JOIN INSIS_PEOPLE_V10_TRACE.P_ADDRESS_LOG AL ON A.address_id = AL.ID_VIGENTE
+WHERE  to_date(A.S_UPDATE,'DD/MM/YYYY') > to_date(AL.S_UPDATE,'DD/MM/YYYY')
+and rownum < 1000","/pp-address-type",,"P_ADDRESS_REJECT","0",,"4","SELECT man_id, A.ADDRESS_TYPE, A.COUNTRY, A.CITY, A.ADDRESS, A.POST_CODE, A.NOTE, A.COUNTRY_CODE, 
+a.address_id, A.COUNTRY_STATE, A.MAIL_YN, A.INVOICE_YN, A.STATE_REGION, A.TERRITORY_CLASSIFICATION, A.CITY_CODE, 
+A.STREET_ID, A.STREET_NUMBER, A.BLOCK_NUMBER,A.ENTRANCE_NUMBER, A.FLOOR_NUMBER, A.APARTMENT_NUMBER, A.QUARTER_ID, A.STATE_NAME, 
+A.REGION_NAME, A.QUARTER_NAME, A.STREET_NAME,A.VALID_FROM , A.VALID_TO, A.USAGE_DATE_FROM, A.USAGE_DATE_TO, A.PRIMARY_FLAG, INSERT_DATE, UPDATE_DATE, BATCH_ID
+FROM INSIS_PEOPLE_V10.P_ADDRESS A"
+"INSIS_PEOPLE_V10","INSIS_PEOPLE_V10_FK",,"P_SALES_UNIT","P_SALES_UNIT","P_SALES_UNIT","35","7",,,"sale_unit_id",,,,,,,,,,,,"0","100",,"0",,"/pp-sales-unit-type",,,"0",,"35","SELECT
+    sale_unit_id,
+    unit_agent_id,
+    agent_id,
+    office_id,
+    sale_office_id,
+    sales_chanel_id,
+    insr_type,
+    commission_type,
+    comm_share,
+    comm_prc,
+    valid_from,
+    valid_to,
+    notes,
+    attr1,
+    attr2,
+    attr3,
+    attr4,
+    attr5,
+    update_date,
+    insert_date,
+    batch_id
+FROM
+    INSIS_PEOPLE_V10.p_sales_unit"
+"INSIS_PEOPLE_V10","INSIS_PEOPLE_V10_FK",,"P_SALES_CHANNEL_CHANGES","P_SALES_CHANNEL_CHANGES","P_SALES_CHANNEL_CHANGES","28","5","changeId,channelId,manId",,"change_id",,,,,,,,,,,,"0","100",,"0",,"/pp-sales-channel-changes-type",,,"0",,"28","SELECT
+    change_id,
+    channel_id,
+    man_id,
+    channel_type,
+    channel_subtype,
+    main_channel,
+    valid_from,
+    valid_to,
+    username,
+    registration_date,
+    update_date,
+    insert_date,
+    batch_id
+FROM
+    INSIS_PEOPLE_V10.p_sales_channel_changes"
+"INSIS_PEOPLE_V10","INSIS_PEOPLE_V10_FK","1","P_People","P_People","P_People","2","3",,"SELECT man_id, PL.ID_VIGENTE, P.MAN_COMP, P.EGN, P.NAME, P.GNAME, P.SNAME, P.FNAME, P.BIRTH_DATE, P.SEX, P.NOTES, P.NATIONALITY, P.COMP_TYPE, P.NAME_SUFFIX, P.NAME_PREFIX, P.DATA_SOURCE, P.LANGUAGE, P.HOME_COUNTRY, P.REGISTRATION_DATE, P.INDUSTRY_CODE, P.SUB_INDUSTRY_CODE, P.FISCAL_PERIOD, P.CLASS_CODE, P.CLASS_SUB_CODE, P.ATTR1, P.ATTR2, P.ATTR3, P.ATTR4, P.ATTR5, P.S_UPDATE
+FROM INSIS_PEOPLE_V10.P_PEOPLE P 
+LEFT JOIN INSIS_PEOPLE_V10_TRACE.P_PEOPLE_LOG PL ON P.man_id = PL.ID_VIGENTE
+where PL.ID_VIGENTE is null 
+and man_id not in (SELECT ID FROM INSIS_PEOPLE_V10_TRACE.P_PEOPLE_REJECT)
+and rownum < 1000","man_id",,,,,,,,,,,,"0","10000","P_PEOPLE_LOG","1","SELECT  PL.ID_INSIS as man_id, P.MAN_COMP, P.EGN, P.NAME, P.GNAME, P.SNAME, P.FNAME, P.BIRTH_DATE, P.SEX, P.NOTES, P.NATIONALITY, 
+P.COMP_TYPE, P.NAME_SUFFIX, P.NAME_PREFIX, P.DATA_SOURCE, P.LANGUAGE, P.HOME_COUNTRY, P.REGISTRATION_DATE, P.INDUSTRY_CODE, P.SUB_INDUSTRY_CODE, P.FISCAL_PERIOD, P.CLASS_CODE, P.CLASS_SUB_CODE, P.ATTR1, P.ATTR2, P.ATTR3, P.ATTR4, P.ATTR5
+FROM INSIS_PEOPLE_V10.P_PEOPLE P
+INNER JOIN INSIS_PEOPLE_V10_TRACE.P_PEOPLE_LOG PL ON P.man_id = PL.ID_VIGENTE
+WHERE  to_date(P.S_UPDATE,'DD/MM/YYYY') > to_date(PL.S_UPDATE,'DD/MM/YYYY')
+and rownum < 1000","/pp-people-type",,"P_PEOPLE_REJECT","0",,"2","SELECT man_id, P.MAN_COMP, P.EGN, P.NAME, P.GNAME, P.SNAME, P.FNAME, P.BIRTH_DATE, P.SEX, P.NOTES, P.NATIONALITY, P.COMP_TYPE, P.NAME_SUFFIX, P.NAME_PREFIX, P.DATA_SOURCE, P.LANGUAGE, P.HOME_COUNTRY, P.REGISTRATION_DATE, P.INDUSTRY_CODE, P.SUB_INDUSTRY_CODE, P.FISCAL_PERIOD, P.CLASS_CODE, P.CLASS_SUB_CODE, P.ATTR1, P.ATTR2, P.ATTR3, P.ATTR4, P.ATTR5 , INSERT_DATE, UPDATE_DATE, BATCH_ID
+FROM INSIS_PEOPLE_V10.P_PEOPLE P 
+"
+"INSIS_PEOPLE_V10","INSIS_PEOPLE_V10_FK",,"P_BENEFICIENTS","P_BENEFICIENTS","P_BENEFICIENTS","29","5",,"SELECT BENEFICIENT_ID, pl.mand_id_insis,INSURED_ID, BNF_STATE
+FROM INSIS_PEOPLE_V10_FK.P_BENEFICIENTS B INNER JOIN INSIS_PEOPLE_V10_TRACE.P_PEOPLE_LOG PL ON B.man_id = pl.man_id_vigente","beneficient_Id",,,,,,,,,,,,"0","100",,"0",,"/pp-beneficients-type",,,"0",,"29","SELECT BENEFICIENT_ID, man_id,INSURED_ID, BNF_STATE,INSERT_DATE, UPDATE_DATE, BATCH_ID
+FROM INSIS_PEOPLE_V10.P_BENEFICIENTS"
+"INSIS_PEOPLE_V10","INSIS_PEOPLE_V10_FK",,"P_PEOPLE_GROUPS","P_PEOPLE_GROUPS","P_PEOPLE_GROUPS","14","4",,"SELECT XL.GROUP_ID_insis, pl.mand_id_insis, NOTES, GROUP_CODE, FROM_DATE, TO_DATE
+FROM INSIS_PEOPLE_V10.P_PEOPLE_GROUPS X 
+INNER JOIN INSIS_PEOPLE_V10_TRACE.P_PEOPLE_LOG PL ON X.man_id = pl.man_id_vigente
+LEFT JOIN INSIS_PEOPLE_V10_TRACE.P_PEOPLE_GROUPS_LOG XL ON X.GROUP_ID = XL.GROUP_ID_vigente","group_Id",,,,,,,,,,,,"0","100",,"0",,"/pp-people-group-type",,,"0",,"14","SELECT GROUP_ID, man_id, NOTES, GROUP_CODE, FROM_DATE, TO_DATE,INSERT_DATE, UPDATE_DATE, BATCH_ID
+FROM INSIS_PEOPLE_V10.P_PEOPLE_GROUPS "
+"INSIS_PEOPLE_V10","INSIS_PEOPLE_V10_FK",,"P_CONTACT_PERSONS","P_CONTACT_PERSONS","P_CONTACT_PERSONS","9","4",,"SELECT CP.CONTACT_PERSON_ID_insis, pl.mand_id_insis, CONTACT_PERSON_NAME, NOTE1, NOTE2, VALID_FROM, VALID_TO
+FROM INSIS_PEOPLE_V10.P_CONTACT_PERSONS C 
+INNER JOIN INSIS_PEOPLE_V10_TRACE.P_PEOPLE_LOG PL ON C.man_id = pl.man_id_vigente
+LEFT JOIN INSIS_PEOPLE_V10_TRACE.P_CONTACT_PERSONS_LOG CP ON C.CONTACT_PERSON_ID = CP.CONTACT_PERSON_ID_vigente","contact_person_id",,,,,,,,,,,,"0","100",,"0",,"/pp-contact-person-type",,,"0",,"9","SELECT CONTACT_PERSON_ID, man_id, CONTACT_PERSON_NAME, NOTE1, NOTE2, VALID_FROM, VALID_TO, INSERT_DATE, UPDATE_DATE, BATCH_ID
+FROM INSIS_PEOPLE_V10.P_CONTACT_PERSONS 
+"
+"INSIS_PEOPLE_V10","INSIS_PEOPLE_V10_FK",,"P_ROLE","P_ROLE","P_ROLE","18","4",,"SELECT pl.mand_id_insis, XL.ROLE_ID_insis
+FROM INSIS_PEOPLE_V10.P_ROLE X 
+INNER JOIN INSIS_PEOPLE_V10_TRACE.P_PEOPLE_LOG PL ON X.man_id = pl.man_id_vigente
+LEFT JOIN INSIS_PEOPLE_V10_TRACE.P_ROLE_LOG XL ON X.ROLE_ID = XL.ROLE_ID_vigente","role_Id",,,,,,,,,,,,"0","100",,"0",,"/pp-role-type",,,"0",,"18","SELECT man_id, ROLE_ID,INSERT_DATE, UPDATE_DATE, BATCH_ID
+FROM INSIS_PEOPLE_V10.P_ROLE "
+"INSIS_PEOPLE_V10","INSIS_PEOPLE_V10_FK",,"P_STAFF_CHANGES","P_STAFF_CHANGES","P_STAFF_CHANGES","36","7","changeId,staffId,manId,securityId,officeId,periodId,accountId,",,"change_id",,,,,,,,,,,,"0","100",,"0",,"/pp-staff-changes-type",,,"0",,"36","SELECT
+    change_id,
+    staff_id,
+    man_id,
+    ocupation,
+    security_id,
+    max_qual_level,
+    office_id,
+    period_id,
+    fl_many_periods,
+    senior,
+    user_email,
+    language,
+    account_id,
+    valid_from,
+    valid_to,
+    username,
+    registration_date,
+    update_date,
+    insert_date,
+    batch_id
+FROM
+    INSIS_PEOPLE_V10.p_staff_changes"
+"INSIS_PEOPLE_V10","INSIS_PEOPLE_V10_FK",,"P_AGENT_CHANGES","P_AGENT_CHANGES","P_AGENT_CHANGES","34","7","changeId,agentId,manId,officeId,accountId",,"change_id",,,,,,,,,,,,"0","100",,"0",,"/pp-agent-changes-type",,,"0",,"34","SELECT
+    change_id,
+    agent_id,
+    man_id,
+    agent_type,
+    office_id,
+    qualif_level,
+    hire_date,
+    fire_date,
+    agent_state,
+    default_agent,
+    main_agent,
+    agent_no,
+    contract_type,
+    contract_months,
+    account_number,
+    prev_job_confirm_date,
+    old_agent_no,
+    leaving_reason,
+    valid_from,
+    valid_to,
+    account_id,
+    username,
+    registration_date,
+    update_date,
+    insert_date,
+    batch_id
+FROM
+    INSIS_PEOPLE_V10.p_agent_changes"
+"INSIS_PEOPLE_V10","INSIS_PEOPLE_V10_FK",,"P_PEOPLE_CHANGES","P_PEOPLE_CHANGES","P_PEOPLE_CHANGES","17","4","changeId,manId,",,"change_id",,,,,,,,,,,,"0","100",,"0",,"/pp-people-changes-type",,,"0",,"17","SELECT
+    change_id,
+    man_id,
+    man_comp,
+    egn,
+    name,
+    gname,
+    sname,
+    fname,
+    birth_date,
+    sex,
+    notes,
+    nationality,
+    comp_type,
+    name_suffix,
+    name_prefix,
+    data_source,
+    language,
+    home_country,
+    industry_code,
+    sub_industry_code,
+    fiscal_period,
+    class_code,
+    class_sub_code,
+    attr1,
+    attr2,
+    attr3,
+    attr4,
+    attr5,
+    valid_from,
+    valid_to,
+    username,
+    registration_date,
+    update_date,
+    insert_date,
+    batch_id
+FROM
+    INSIS_PEOPLE_V10.p_people_changes"
+"INSIS_PEOPLE_V10","INSIS_PEOPLE_V10_FK",,"P_BANK_CHANGES","P_BANK_CHANGES","P_BANK_CHANGES","22","5","changeId,bankId,manId,mainBankId",,"change_id",,,,,,,,,,,,"0","100",,"0",,"/pp-bank-changes-type",,,"0",,"22","SELECT
+    change_id,
+    bank_id,
+    man_id,
+    bank_code,
+    swift_code,
+    main_bank_id,
+    valid_from,
+    valid_to,
+    username,
+    registration_date,
+    update_date,
+    insert_date,
+    batch_id
+FROM
+    INSIS_PEOPLE_V10.p_bank_changes"
+"INSIS_PEOPLE_V10","INSIS_PEOPLE_V10_FK",,"P_CLIENT_CHANGES","P_CLIENT_CHANGES","P_CLIENT_CHANGES","23","5","changeId,clientId,manId,accountId","SELECT CHANGE_ID, CLIENT_ID, pl.mand_id_insis, OFFICIAL_STATUS, IC_STATUS, CORPORATE_IC_STATUS, EMPLOYEE_STATUS, RISK_RATING, SEGMENT, CUSTOMER_TYPE, PROFITABILITY, ACCEPT_MARKET_INFO, CLIENT_USER_NAME, VALID_FROM, VALID_TO, ACCOUNT_ID, USERNAME, REGISTRATION_DATE
+FROM PEOPLE.P_CLIENT_CHANGES X 
+INNER JOIN INSIS_PEOPLE_V10_TRACE.P_PEOPLE_LOG PL ON X.man_id = pl.man_id_vigente
+LEFT JOIN INSIS_PEOPLE_V10_TRACE.P_CLIENT_CHANGES_LOG XL ON X.CHANGE_ID = XL.CHANGE_ID_vigente","change_id",,,,,,,,,,,,"0","100",,"0",,"/pp-client-changes-type",,,"0",,"23","SELECT
+    change_id,
+    client_id,
+    man_id,
+    official_status,
+    ic_status,
+    corporate_ic_status,
+    employee_status,
+    risk_rating,
+    segment,
+    customer_type,
+    profitability,
+    accept_market_info,
+    client_user_name,
+    valid_from,
+    valid_to,
+    account_id,
+    username,
+    registration_date,
+    update_date,
+    insert_date,
+    batch_id
+FROM
+    INSIS_PEOPLE_V10.p_client_changes"
+"INSIS_PEOPLE_V10","INSIS_PEOPLE_V10_FK",,"P_OTHER_CHANGES","P_OTHER_CHANGES","P_OTHER_CHANGES","27","5",,,"change_Id",,,,,,,,,,,,"0","100",,"0",,"/pp-other-changes-type",,,"0",,"27","SELECT
+    change_id,
+    address_id,
+    man_id,
+    address_type,
+    change_date,
+    notes,
+    oop1,
+    oop2,
+    oop3,
+    oop4,
+    other_subtype,
+    valid_from,
+    valid_to,
+    username,
+    registration_date,
+    update_date,
+    insert_date,
+    batch_id
+FROM
+    INSIS_PEOPLE_V10.p_other_changes"
+"INSIS_PEOPLE_V10","INSIS_PEOPLE_V10_FK",,"P_OFFICE_CHANGES","P_OFFICE_CHANGES","P_OFFICE_CHANGES","32","6","changeId",,"change_id",,,,,,,,,,,,"0","100",,"0",,"/pp-office-changes-type",,,"0",,"32","SELECT
+    change_id,
+    office_id,
+    man_id,
+    office_no,
+    parent_office,
+    default_office,
+    office_category,
+    gl_no,
+    region_id,
+    country_id,
+    valid_from,
+    valid_to,
+    username,
+    registration_date,
+    update_date,
+    insert_date,
+    batch_id
+FROM
+    INSIS_PEOPLE_V10.p_office_changes"
+"INSIS_PEOPLE_V10","INSIS_PEOPLE_V10_FK",,"P_OFFICES","P_OFFICES","P_OFFICES","20","5",,"SELECT OFFICE_ID, OFFICE_NO, pl.mand_id_insis, PARENT_OFFICE, DEFAULT_OFFICE, OFFICE_CATEGORY, GL_NO, REGION_ID, COUNTRY_ID
+FROM INSIS_PEOPLE_V10.P_OFFICES X INNER JOIN INSIS_PEOPLE_V10_TRACE.P_PEOPLE_LOG PL ON X.man_id = pl.man_id_vigente","office_Id",,,,,,,,,,,,"0","100",,"0",,"/pp-office-type",,,"0",,"20","SELECT OFFICE_ID, OFFICE_NO, man_id, PARENT_OFFICE, DEFAULT_OFFICE, OFFICE_CATEGORY, GL_NO, REGION_ID, COUNTRY_ID,INSERT_DATE, UPDATE_DATE, BATCH_ID
+FROM INSIS_PEOPLE_V10.P_OFFICES"
+"INSIS_PEOPLE_V10","INSIS_PEOPLE_V10_FK",,"P_INSURERS","P_INSURERS","P_INSURERS","13","4",,"SELECT INSURER_ID, pl.id_insis man_id, INSURER_TYPE, CURRENT_INSURER, REG_NUM, X.S_UPDATE
+FROM INSIS_PEOPLE_V10.P_INSURERS X 
+INNER JOIN INSIS_PEOPLE_V10_TRACE.P_PEOPLE_LOG PL ON X.man_id = pl.id_vigente
+LEFT JOIN INSIS_PEOPLE_V10_TRACE.P_INSURERS_LOG AL ON  X.INSURER_ID = AL.ID_VIGENTE
+where AL.ID_VIGENTE is null 
+and X.INSURER_ID not in (SELECT ID FROM INSIS_PEOPLE_V10_TRACE.P_INSURERS_REJECT)
+and rownum < 1000","insurer_id",,,,,,,,,,,,"0","10","P_INSURERS_LOG","0","SELECT INSURER_ID, pl.id_insis man_id, INSURER_TYPE, CURRENT_INSURER, REG_NUM
+FROM INSIS_PEOPLE_V10.P_INSURERS X 
+INNER JOIN INSIS_PEOPLE_V10_TRACE.P_PEOPLE_LOG PL ON X.man_id = pl.id_vigente
+LEFT JOIN INSIS_PEOPLE_V10_TRACE.P_INSURERS_LOG XL ON  X.INSURER_ID = XL.ID_VIGENTE
+WHERE  to_date(X.S_UPDATE,'DD/MM/YYYY') > to_date(XL.S_UPDATE,'DD/MM/YYYY')
+and rownum < 1000","/pp-insurer-type",,"P_INSURERS_REJECT","0",,"13","SELECT INSURER_ID, man_id, INSURER_TYPE, CURRENT_INSURER, REG_NUM,  INSERT_DATE, UPDATE_DATE, BATCH_ID
+FROM INSIS_PEOPLE_V10.P_INSURERS 
+"
+"INSIS_PEOPLE_V10","INSIS_PEOPLE_V10_FK",,"P_USER_ACCOUNTS","P_USER_ACCOUNTS","P_USER_ACCOUNTS","3","3",,,"account_Id",,,,,,,,,,,,"0","100",,"0",,"/pp-account-type",,,"0",,"3","SELECT account_id,user_name,user_email,language,country,lock_account,lock_account_date,change_pwd,pwd_expire_date,
+update_date,insert_date,batch_id
+FROM INSIS_PEOPLE_V10.P_USER_ACCOUNTS"
+"INSIS_PEOPLE_V10","INSIS_PEOPLE_V10_FK",,"HT_PEOPLE_GROUPS","HT_PEOPLE_GROUPS","HT_PEOPLE_GROUPS","1","2",,,"id",,,,,,,,,,,,"0","100",,"0",,"/pp-groups-type",,,"0",,"1","SELECT
+    id,
+    name,
+    status,
+    group_type,
+    valid_from,
+    valid_to,
+    registration_date,
+    username,
+    update_date,
+    insert_date,
+    batch_id
+FROM
+    INSIS_PEOPLE_V10.ht_people_groups"
+"INSIS_PEOPLE_V10","INSIS_PEOPLE_V10_FK",,"P_SEARCH_INFO","P_SEARCH_INFO","P_SEARCH_INFO","37","7","manId,roleId,referenceId",,"man_id",,,,,,,,,,,,"0","100",,"0",,"/pp-search-info-type",,,"0",,"37","SELECT
+    man_id,
+    role_id,
+    reference_id,
+    search_info,
+    update_date,
+    insert_date,
+    batch_id
+FROM
+    INSIS_PEOPLE_V10.p_search_info"
